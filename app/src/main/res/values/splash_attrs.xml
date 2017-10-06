@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SplashAnimView">
+        <attr name="circleRadius" format="reference" />
+        <attr name="rotationRadius" format="reference" />
+    </declare-styleable>
+</resources>

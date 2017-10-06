@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- error strings. -->
+    <string name="error_context" translatable="false">Global application context cannot be set to null.</string>
+
+    <!-- splash screen strings. -->
+    <string name="splash_logo_desc" translatable="false">Splash Screen Logo</string>
+    <string name="splash_copyright" translatable="false">© Copyright 2017 MCORE Innovation Software</string>
+    <string name="splash_copyright_desc_1" translatable="false">Mobile App Design and Development Company</string>
+    <string name="splash_copyright_desc_2" translatable="false">All Rights Reserved</string>
+</resources>

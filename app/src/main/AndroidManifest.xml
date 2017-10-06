@@ -1,21 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mcoresoftware.flashlight_fx">
+    package="com.mcoresoftware.flashlight_fx"
+    android:installLocation="auto">
+
+    <!-- Required to be able to access the camera device. -->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!-- The app uses the device's back-facing camera. -->
+    <uses-feature android:name="android.hardware.camera" />
+    <!-- The app uses the flash feature that the device's camera supports. -->
+    <uses-feature android:name="android.hardware.camera.flash" />
+
+    <!-- Allows access to the flashlight. -->
+    <permission android:name="android.permission.FLASHLIGHT"
+        android:permissionGroup="android.permission-group.HARDWARE_CONTROLS"
+        android:protectionLevel="normal" />
 
     <application
+        android:name=".app.FlashlightApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        android:theme="@style/AppTheme"
+        android:screenOrientation="portrait">
+
+        <activity android:name=".MainActivity"
+            android:label="@string/app_name" >
+        </activity>
+
+        <activity android:name=".screen.splash.SplashActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
