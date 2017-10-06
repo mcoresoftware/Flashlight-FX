@@ -1,5 +1,7 @@
 # Flashlight-FX
 
+![Flashlight-FX icon](https://github.com/mcoresoftware/Flashlight-FX/blob/master/app/src/main/res/mipmap-xxhdpi/ic_launcher.png)
+
 A simple and effective pocket flashlight for Android smart phones and tablets.
 
 ## Versioning
