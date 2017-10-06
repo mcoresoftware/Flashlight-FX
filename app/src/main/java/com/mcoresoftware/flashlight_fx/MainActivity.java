@@ -152,27 +152,7 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
             mFlashEnabled = state;
         }
     }
-/*
-    private void getCamera() {
-        preview = (SurfaceView)findViewById(R.id.PREVIEW);
-        mHolder = preview.getHolder();
-        mHolder.addCallback(MainActivity.this);
-        mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
-        if (mCamera == null) {
-            try {
-                mCamera = Camera.open();
-                Parameters params = mCamera.getParameters();
-                try {
-                    mCamera.setPreviewDisplay(mHolder);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            } catch (RuntimeException e) {
-                Log.e(LOG_TAG, "Failed");
-            }
-        }
-    }
-*/
+
     /**
      * Check if this device has a camera and camera flashlight.
      * @return
