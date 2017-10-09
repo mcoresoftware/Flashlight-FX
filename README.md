@@ -1,4 +1,4 @@
-# Flashlight-FX for Android [![Build Status][travis-image]][travis-url]
+# Flashlight-FX for Android [![Build Status][travis-image]][travis-url] [![API][api-image]][api-url]
 
 ![Flashlight-FX icon](https://github.com/mcoresoftware/Flashlight-FX/blob/master/app/src/main/res/mipmap-xxhdpi/ic_launcher.png)
 
@@ -24,3 +24,6 @@ This Flashlight-FX project is licensed under the MIT License - see the [LICENSE]
 
 [travis-url]: https://travis-ci.org/mcoresoftware/Flashlight-FX
 [travis-image]: https://travis-ci.org/mcoresoftware/Flashlight-FX.svg?branch=master
+
+[api-url]: https://android-arsenal.com/api?level=19
+[api-image]: https://img.shields.io/badge/API-19%2B-blue.svg?style=flat
