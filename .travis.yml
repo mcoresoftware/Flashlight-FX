@@ -1,4 +1,15 @@
 language: android
 
+sudo: required
+
+jdk: oraclejdk8
+
+env:
+  global:
+    - ANDROID_API=19
+
 before_install:
-  - chmod +x gradlew
+- chmod +x gradlew
+
+script:
+- "./gradlew clean build connectedCheck -PdisablePreDex --stacktrace"
