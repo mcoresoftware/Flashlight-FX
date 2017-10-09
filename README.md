@@ -1,8 +1,10 @@
-# Flashlight-FX
+# Flashlight-FX for Android [![Build Status][travis-image]][travis-url]
 
 ![Flashlight-FX icon](https://github.com/mcoresoftware/Flashlight-FX/blob/master/app/src/main/res/mipmap-xxhdpi/ic_launcher.png)
 
-A simple and effective pocket flashlight for Android smart phones and tablets.
+## Overview
+
+**Flashlight-FX** is a simple and effective pocket flashlight for Android smart phones and tablets.
 
 ## Versioning
 
@@ -10,8 +12,15 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **KÖS, Murat** *IT Engineer* - MCORE Innovation Software
+* **KÖS, Murat** *Software Engineer* - MCORE Innovation Software
+
+## Contact
+
+For any bugs and discussions, please use Github Issues.
 
 ## License
 
 This Flashlight-FX project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+[travis-url]: https://travis-ci.org/mcoresoftware/Flashlight-FX
+[travis-image]: https://travis-ci.org/mcoresoftware/Flashlight-FX.svg?branch=master

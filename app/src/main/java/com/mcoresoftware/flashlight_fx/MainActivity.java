@@ -19,15 +19,21 @@ import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.hardware.Camera.Parameters;
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.Looper;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.kyleduo.switchbutton.SwitchButton;
@@ -53,17 +59,26 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
 
     private boolean mFlashEnabled;
 
-    private SwitchButton   mFlashlightControl           = null;
+    ImageButton btnSwitch;
+
+    MediaPlayer mMediaPlayer;
+
+    //private SwitchButton   mFlashlightControl           = null;
     private boolean        mDoubleBackToExitPressedOnce = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // remove title.
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_main);
 
-        if (null == mFlashlightControl) {
-            mFlashlightControl = (SwitchButton)findViewById(
-                    R.id.sb_flashlight_control);
+        if (null == btnSwitch) {
+            btnSwitch = (ImageButton)findViewById(R.id.BtnSwitch);
         }
 
         if (!checkCameraAndFlashlightHardware()) {
@@ -80,21 +95,17 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
         }
 
         createCamera();
+        toggleButtonImage();
 
-        mFlashlightControl.setOnCheckedChangeListener(
-                new CompoundButton.OnCheckedChangeListener() {
+        btnSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    if (mCamera != null) {
-                        toggleFlash();
-                        mCamera.startPreview();
-                    }
+            public void onClick(View view) {
+                if (mFlashEnabled) {
+                    toggleFlash();
+                    mCamera.startPreview();
                 } else {
-                    if (mCamera != null) {
-                        toggleFlash();
-                        mCamera.stopPreview();
-                    }
+                    toggleFlash();
+                    mCamera.stopPreview();
                 }
             }
         });
@@ -146,6 +157,7 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
                     mFlashEnabled = false;
                     throw new RuntimeException("Cannot turn the flash on!");
                 } finally {
+                    toggleButtonImage();
                 }
             }
         } else {
@@ -295,5 +307,29 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
                 mDoubleBackToExitPressedOnce = false;
             }
         }, 2000);
+    }
+
+    private void playSound() {
+        if (mFlashEnabled) {
+            mMediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.light_switch_off);
+        } else {
+            mMediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.light_switch_on);
+        }
+        mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                mp.release();
+            }
+        });
+        mMediaPlayer.start();
+    }
+
+    private void toggleButtonImage() {
+        if (mFlashEnabled) {
+            btnSwitch.setImageResource(R.drawable.btn_switch_on);
+        } else {
+            btnSwitch.setImageResource(R.drawable.btn_switch_off);
+        }
+        playSound();
     }
 }

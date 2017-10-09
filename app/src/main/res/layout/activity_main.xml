@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:keepScreenOn="true"
     tools:context="com.mcoresoftware.flashlight_fx.MainActivity">
 
-    <com.kyleduo.switchbutton.SwitchButton
-        android:id="@+id/sb_flashlight_control"
-        style="@style/SwitchButtonStyle"
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/graffiti"/>
+
+    <ImageButton
+        android:id="@+id/BtnSwitch"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="120dip"
+        android:src="@drawable/btn_switch_off"
+        android:background="@null"
+        android:contentDescription="@null"/>
 
     <SurfaceView
         android:id="@+id/PREVIEW"
@@ -18,4 +29,31 @@
         android:layout_height="1dip"
         android:background="#000" />
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:background="@drawable/semitransparent_background">
+
+        <com.mcoresoftware.flashlight_fx.screen.splash.SplashTextView
+            style="@style/shadowText"
+            android:text="Flashlight-FX v1.2.0"/>
+
+        <com.mcoresoftware.flashlight_fx.screen.splash.SplashTextView
+            style="@style/shadowText"
+            android:text="mcoresoftware@gmail.com"/>
+
+        <com.mcoresoftware.flashlight_fx.screen.splash.SplashTextView
+            style="@style/shadowText"
+            android:text="@string/splash_copyright"/>
+
+        <com.mcoresoftware.flashlight_fx.screen.splash.SplashTextView
+            style="@style/shadowText"
+            android:text="@string/splash_copyright_desc_2"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
